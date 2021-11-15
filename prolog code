@@ -1,0 +1,40 @@
+/******************************************************************************
+
+                            Online Prolog Compiler.
+                Code, Compile, Run and Debug Prolog program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+/*here the x is start place and y is destination of the disk*/
+move(1,X,Y,_) :-  /*method for the first disk movement*/
+         write('Moving top disk from '), 
+         write(X), 
+         write(' to '), 
+         write(Y), 
+         nl. /*used for a line breaker and next line in printing*/ 
+         
+         
+/*********************
+method that is used to move the disks recursively and make the puzzle solve at the end using reccursion.
+**********/
+
+move(N,X,Y,Z) :- 
+         N>1, 
+         M is N-1, 
+         move(M,X,Z,Y), 
+         move(1,X,Y,_), 
+         move(M,Z,Y,X).
+         
+         
+/*main method of the program that calls the process here*/
+main:-
+        process,
+        halt.
+
+/*the process where we write the query and excecute it in the main*/
+process:-
+
+        write('program worked!!!!!').
+?- move(3,left,right,center). /*query with the number of disks*/
+
+:- main.
